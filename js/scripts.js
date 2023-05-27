@@ -75,8 +75,10 @@ let pokemonRepository = (function() {
   
   
 function addButtonEventListener(button, pokemon){
-    button.addEventListener('click', function() {
-    showDetails(pokemon);
+  // Event listener for button click  
+  button.addEventListener('click', function() {
+    // Call showDetails function with the pokemon object as the parameter
+      showDetails(pokemon);
   });
  }
 
@@ -91,7 +93,7 @@ function addButtonEventListener(button, pokemon){
 
 })();
 
-
+// Iterate over the pokemonList and add each pokemon as a list item
 pokemonRepository.getAll().forEach(function(pokemon){
   pokemonRepository.addListItem(pokemon);
 });
