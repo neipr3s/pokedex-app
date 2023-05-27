@@ -53,24 +53,47 @@ let pokemonRepository = (function() {
     return filteredPokemon;
   }
 
-// the purpose of this, is to expose the given functions within pokemonRepository so that external code can access
-// and use these functions while keeping pokemonList private //
- return {
+ function showDetails(pokemon){
+ console.log(pokemon)
+ }
+
+ function addListItem(pokemon){
+  let element = document.querySelector('.pokemon-List');
+  let listItem = document.createElement('li');
+  let button = document.createElement('button');
+
+  button.innerText = pokemon.name; 
+  button.classList.add('button-style');
+  
+  listItem.appendChild(button); // appends the button as a child to the list item //
+  element.appendChild(listItem); // appends the list item as a child to the container element// 
+  
+  addButtonEventListener(button, pokemon);
+
+}
+
+  
+  
+function addButtonEventListener(button, pokemon){
+    button.addEventListener('click', function() {
+    showDetails(pokemon);
+  });
+ }
+
+ return { // the purpose of this, is to expose the given functions within pokemonRepository so that external code can access and use these functions while keeping pokemonList private //
   getAll: getAll,
   add: add,
-  findPokemonByName: findPokemonByName
-  
+  findPokemonByName: findPokemonByName,
+  addListItem: addListItem,
  };
+
+ 
+
 })();
 
+
 pokemonRepository.getAll().forEach(function(pokemon){
- let element = document.querySelector('pokemon-List')
- let listItem = document.createElement('li')
- let button = document.createElement('button')
- button.innerText = pokemon.name;
- button.classList.add('button-style')
- listItem.appendChild(button); // appends the button as a child to the list item 
- element.appendChild(listItem); // appends the list item as a child to the container element
+  pokemonRepository.addListItem(pokemon);
 });
 
 
@@ -82,8 +105,7 @@ pokemonRepository.getAll().forEach(function(pokemon){
 
 
 
-
-
+ 
 
 
 
