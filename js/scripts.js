@@ -1,21 +1,21 @@
 let pokemonRepository = (function() {
-  let pokemonList = [];
-  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?offset=20&limit=150';
-  let modalContainer = document.querySelector('#modal-container');
+  let pokemonList = []; // empty array to store pokemon data
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?offset=20&limit=900';
+  let modalContainer = document.querySelector('#modal-container'); // assigns modal to corresponding html tag
 
   function add(pokemon) { 
     if (
-      typeof pokemon === "object" &&
+      typeof pokemon === "object" && // checks if pokemon is object with other parameters
       "name" in pokemon &&
       "detailsUrl" in pokemon
     ) {
-      pokemonList.push(pokemon);
+      pokemonList.push(pokemon); // if conditions are met, pokemon is pushed to the list
     } else {
-      console.log("pokemon is not correct");
+      console.log("pokemon is not correct"); // if not, error message is logged
     }
   }
 
-  function getAll() {
+  function getAll() { // returns entire pokemonList array
     return pokemonList;
   }
 
@@ -49,7 +49,9 @@ let pokemonRepository = (function() {
         json.results.forEach(function(item) {
           let pokemon = {
             name: item.name,
-            detailsUrl: item.url
+            detailsUrl: item.url,
+            types: item.types,
+            weight: item.weight,
           };
           add(pokemon);
         });
@@ -70,6 +72,10 @@ let pokemonRepository = (function() {
       .then(function(details) {
         pokemon.imageUrl = details.sprites.front_default;
         pokemon.height = details.height;
+        pokemon.weight = details.weight;
+        pokemon.types = details.types.map(function(type) {
+          return type.type.name;
+        });
         showModal(pokemon);
         hideLoadingMessage();
       })
@@ -80,31 +86,39 @@ let pokemonRepository = (function() {
   }
 
   function showModal(pokemon) {
-    modalContainer.innerHTML = '';
+    modalContainer.innerHTML = ''; // clears content of modalContainer
 
     let modal = document.createElement('div');
     modal.classList.add('modal');
 
     let closeButtonElement = document.createElement('button');
     closeButtonElement.classList.add('modal-close');
-    closeButtonElement.innerText = 'Close';
+    closeButtonElement.innerHTML = '<span class="close-button">&#x2716;</span>';
     closeButtonElement.addEventListener('click', hideModal);
 
     let titleElement = document.createElement('h1');
     titleElement.innerText = pokemon.name;
 
-    let contentElement = document.createElement('p');
-    contentElement.innerText = 'Height: ' + pokemon.height;
+    let heightElement = document.createElement('h2');
+    heightElement.innerText = 'Height: ' + pokemon.height;
+
+    let weightElement = document.createElement('h2');
+    weightElement.innerText = 'Weight: ' + pokemon.weight;
+
+    let typesElement = document.createElement('h2');
+    typesElement.innerText = 'Type(s): ' + pokemon.types;
 
     let imageElement = document.createElement('img');
     imageElement.setAttribute('src', pokemon.imageUrl);
     imageElement.setAttribute('alt', 'Image of ' + pokemon.name);
 
-    // modal.appendChild(closeButtonElement);
     modal.appendChild(titleElement);
-    modal.appendChild(contentElement);
     modal.appendChild(imageElement);
+    modal.appendChild(heightElement);
+    modal.appendChild(weightElement);
+    modal.appendChild(typesElement);
     modalContainer.appendChild(modal);
+    modal.appendChild(closeButtonElement);
 
     modalContainer.classList.add('isVisible');
   }
@@ -160,87 +174,3 @@ pokemonRepository.loadList().then(function() {
   });
 });
 
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-/*
-// Iterate over each item in the pokemonList array
-for (let i = 0; i<pokemonList.length; i++) 
-// Check if the Pokémon's height is greater than 1.5
-  if (pokemonList[i].height > 1.5){
-    // If so, display a special message
-    document.write("<p>" + pokemonList[i].name + " [type: " + pokemonList[i].type + "]" + " (height: " + pokemonList[i].height + ") - Wow, That's Big! <br><br></p>")
-  } 
-  else {
-  // if not, just display the name and height without comment
-    document.write("<p>" + pokemonList[i].name + " [type: "+ pokemonList[i].type + "]" + " (height: " + pokemonList[i].height + ")<br><br></p>")// [")<br><br>" closes bracket and creates space with 2 new lines];
-
-}
-*/
-
-
-     // let dialogPromiseReject;
-      // function hideModal() {
-      //   let modalContainer = document.querySelector('#modal-container');
-      //   modalContainer.classList.remove('is-visible');
-      // }
-      // if (dialogPromiseReject) {
-      //   dialogPromiseReject();
-      //   dialogPromiseReject = null;
-      // }
-
-  // function showDialog(title, text) {
-  //   showModal(title, text);
-
-  //   let modalContainer = document.querySelector('#modal-container');
-
-  //   let modal = modalContainer.querySelector('.modal');
-
-  //   let confirmButton = document.createElement('button');
-  //   confirmButton.classList.add('modal-confirm');
-  //   confirmButton.innerText = 'Confirm';
-
-  //   let cancelButton = document.createElement('button');
-  //   cancelButton.classList.add('modal-cancel');
-  //   cancelButton.innerText = 'Cancel';
-
-  //   modal.appendChild(confirmButton);
-  //   modal.appendChild(cancelButton);
-
-  //   confirmButton.focus();
-
-
-    // return new Promise((resolve, reject) => {
-    //   cancelButton.addEventListener('click', hideModal);
-    //   confirmButton.addEventListener('click', () => {
-    //     dialogPromiseReject = null;
-    //     hideModal();
-    //     resolve();
-    //   });
-
-    //   dialogPromiseReject = reject;
-    // });
-  // }
-
-  // document.querySelector('#show-modal').addEventListener('click', () => {
-  //   showModal('Modal title', 'This is the modal content!');
-  // });
-
-  // document.querySelector('#show-dialog').addEventListener('click', () => {
-  //   showDialog('Confirm action', 'Are you sure you want to do this?').then(function() {
-  //     alert('confirmed!');
-  //   }, () => {
-  //     alert('not confirmed');
-  //   });
-  // })//
