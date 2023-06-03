@@ -11,13 +11,11 @@ body {
     padding: 0;
     
   }
-  /* p {
-    font-family: 'Press Start 2P', cursive;
-    font-size: small;
-    text-shadow: 1px 1px black;
-    color: yellow;
 
-  } */
+  .pokemon-list li {
+    margin-bottom: 10px;
+  }
+  
  .button-style {
   background-color: yellow;
   border: 1px;
@@ -33,6 +31,7 @@ body {
   -webkit-transition-duration: 0.4s ; 
   transition-duration: 0.4s;
   cursor: pointer;
+  
   
  }
  #modal-container {
@@ -85,12 +84,26 @@ body {
 
 
 .modal-close {
-  float: right;
-  -webkit-appearance: none;
-  border: 0;
-  background: none;
-  color: #777;
-  text-decoration: underline;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.close-button {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  background-color: red;
+  border-radius: 50%;
 }
 
 .modal h1 {
