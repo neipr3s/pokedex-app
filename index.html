@@ -12,15 +12,42 @@
     <title>Pokédex</title>
   </head>
   <body>
-    <h1>Pokédex</h1>
-    <ul class="pokemon-list list-group"></ul>
-    <div id="modal-container">
-      <div class="modal">
-        <button class="modal-close btn btn-primary">
-          <span class="close-button">&#x2716;</span>
-        </button>
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <a class="navbar-brand" href="#">
+            <img src="image/pokedex-img.png" alt = "image of pokedex" class="pokedex-logo">
+            <img src="image/pngegg.png" alt="pokemon logo" class="pokemon-logo">
+            <img src="image/pokedex-img.png" alt = "image of pokedex" class="pokedex-logo"></a>
+          </a>
+        </nav>
       </div>
-    </div>
+    </header>
+    <main>
+      <ul class="list-group">
+      </ul>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title" id="exampleModalLabel">Modal title</h1>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <img class="img-fluid pokemon-image"  alt="image of a Pokemon">
+              <p class="pokemon-height"></p>
+              <p class="pokemon-weight"></p>
+              <p class="pokemon-types"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+     
+    </footer>
   <script src="jquery-3.4.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
