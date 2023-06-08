@@ -13,8 +13,10 @@ body {
 
   .navbar {
     justify-content: center;
+    border-bottom: 50px;
   }
-  
+
+
   .list-group {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -24,6 +26,7 @@ body {
     padding: 0;
     margin-left: 5%;
     background-color: aquamarine;
+
   }
   
   .list-group-item {
@@ -39,7 +42,12 @@ body {
     text-align: center;
     margin-bottom: 50px;
     margin-left: 20px;
-    display: inline-block;
+    color: yellow;
+  }
+
+  p {
+    text-align: center;
+    color: yellow;
   }
   .pokemon-list li {
     margin-bottom: 10px;
@@ -69,6 +77,9 @@ body {
       margin-right: 20px;
       margin-top: 10px;
     }
+    .modal {
+      width: 90%;
+    }
   }
 
  .btn {
@@ -93,16 +104,10 @@ body {
   transform: scale(1.03);
 }
 
-
-@media (max-width: 768px) {
-  .modal {
-    width: 90%;
-  }
-}
-
 .modal-content {
   margin: auto;
-  display: inline-block;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
   background: #fff;
   background-color: aquamarine;
@@ -114,7 +119,7 @@ body {
 
 }
 .close-button {
-  display: inline-block;
+  display: flex;
   width: 24px;
   height: 24px;
   line-height: 24px;
