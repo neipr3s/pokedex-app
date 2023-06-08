@@ -104,6 +104,10 @@ body {
   transform: scale(1.03);
 }
 
+.modal-header {
+  border-bottom: none;
+}
+
 .modal-content {
   margin: auto;
   display: flex;
