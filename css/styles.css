@@ -1,13 +1,13 @@
 body {
     font-family: 'Press Start 2P', cursive;
     font-size: small;
-    text-shadow: 1px 1px black;
+    text-shadow: 1px 1px #3c5aa6;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     padding: 0;    
-    background-color: aquamarine;
+    background-color: rgb(158, 232, 207);
 
 }
 
@@ -25,7 +25,7 @@ body {
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     margin-left: 5%;
-    background-color: aquamarine;
+    background-color: rgb(158, 232, 207);
 
   }
   
@@ -34,7 +34,7 @@ body {
    text-align: center;
    border: none;
    padding: 0;
-   background-color: aquamarine;
+   background-color: rgb(158, 232, 207);
   }
   
 
@@ -42,12 +42,12 @@ body {
     text-align: center;
     margin-bottom: 50px;
     margin-left: 20px;
-    color: yellow;
+    color: #ffcb05;
   }
 
   p {
     text-align: center;
-    color: yellow;
+    color: #ffcb05;
   }
   .pokemon-list li {
     margin-bottom: 10px;
@@ -83,9 +83,9 @@ body {
   }
 
  .btn {
-  background-color: aquamarine;
+  background-color: rgb(158, 232, 207);
   border: none;
-  color:yellow;
+  color:#ffcb05;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -93,7 +93,7 @@ body {
   font-size: 16px;
   font-family: 'Press Start 2P', cursive;
   font-size: small;
-  text-shadow: 1px 1px black;
+  text-shadow: 1px 1px #3c5aa6;
   -webkit-transition-duration: 0.4s ; 
   transition-duration: 0.4s;
   cursor: pointer; 
@@ -114,8 +114,9 @@ body {
   align-items: center;
   box-sizing: border-box;
   background: #fff;
-  background-color: aquamarine;
-  border: none;
+  background-color: rgb(158, 232, 207);
+  border: solid 4px #ffcb05; /* Yellow border */
+  outline: solid 1px #3c5aa6; 
   padding: 15px;
   width: 100%;
   max-width: 700px;
