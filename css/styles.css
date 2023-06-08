@@ -117,6 +117,7 @@ body {
   background-color: rgb(158, 232, 207);
   border: solid 4px #ffcb05; /* Yellow border */
   outline: solid 1px #3c5aa6; 
+  border-radius: 0;
   padding: 15px;
   width: 100%;
   max-width: 700px;
