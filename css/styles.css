@@ -1,8 +1,3 @@
-:root{
-  --text-color: black;
-  --background-color: rgb(179, 240, 220);
-}
-
 body {
     font-family: 'Press Start 2P', cursive;
     font-size: small;
@@ -11,9 +6,10 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    padding: 0;
-    
-  }
+    padding: 0;    
+    background-color: aquamarine;
+
+}
 
   .navbar {
     justify-content: center;
@@ -27,15 +23,15 @@ body {
     grid-row-gap: 10px;
     padding: 0;
     margin-left: 5%;
-    margin-right: 5%;
+    background-color: aquamarine;
   }
   
   .list-group-item {
    list-style-type: none;
    text-align: center;
-   background-color: var(--background-color);
    border: none;
    padding: 0;
+   background-color: aquamarine;
   }
   
 
@@ -61,10 +57,24 @@ body {
     margin-top: 20px;
   }
 
+  @media (max-width: 768px) {
+    .pokedex-logo {
+      max-width: 200px;
+      margin-top: 5px;
+    }
+  
+    .pokemon-logo {
+      max-width: 150px;
+      margin-left: 20px;
+      margin-right: 20px;
+      margin-top: 10px;
+    }
+  }
+
  .btn {
-  background-color: var(--primary--color);
-  border: 1px;
-  color: white;
+  background-color: aquamarine;
+  border: none;
+  color:yellow;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -75,10 +85,13 @@ body {
   text-shadow: 1px 1px black;
   -webkit-transition-duration: 0.4s ; 
   transition-duration: 0.4s;
-  cursor: pointer;
-  
-  
+  cursor: pointer; 
+
  }
+
+ .btn:hover {
+  transform: scale(1.03);
+}
 
 
 @media (max-width: 768px) {
@@ -87,7 +100,19 @@ body {
   }
 }
 
+.modal-content {
+  margin: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  background: #fff;
+  background-color: aquamarine;
+  border: none;
+  padding: 15px;
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
 
+}
 .close-button {
   display: inline-block;
   width: 24px;
@@ -112,3 +137,4 @@ body {
 ul {
   list-style: none;
 }
+
