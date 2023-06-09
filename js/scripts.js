@@ -32,7 +32,7 @@ let pokemonRepository = (function() {
         pokemon.height = details.height;
         pokemon.weight = details.weight;
         pokemon.types = details.types.map(function(type) {
-          return type.type.name;
+          return type.type.name.toUpperCase();
         });
         return pokemon;
       }).catch(function(e) {
