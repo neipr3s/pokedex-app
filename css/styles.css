@@ -115,6 +115,30 @@ body {
   transform: scale(1.03);
 }
 
+#button-container {
+  display: flex;
+  justify-content: space-between;
+}
+  #next-btn {
+    position: absolute;
+    right: 40px;
+  } 
+
+  #prev-btn {
+    position: absolute;
+    left: 40px;  
+  }
+  @media (max-width: 768px) {
+    .button-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .right-button {
+      margin-top: 10px; /* Add spacing between buttons on smaller screens */
+    }
+  }
+
 .modal-header {
   border-bottom: none;
 }
