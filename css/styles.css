@@ -8,10 +8,11 @@ body {
     margin: 0;
     padding: 0;    
     background: linear-gradient(45deg, rgb(158, 232, 207), white );
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
 }
-
-
   .navbar {
     justify-content: center;
     border-bottom: 50px;
@@ -46,6 +47,7 @@ body {
    background: none;
    font-size: 30px;
    border-radius: 0;
+   
   }
   
 
@@ -125,21 +127,23 @@ body {
   #next-btn {
     position: absolute;
     right: 40px;
+   
   } 
 
   #prev-btn {
     position: absolute;
-    left: 40px;  
+    left: 40px; 
   }
   @media (max-width: 768px) {
     .button-container {
       flex-direction: column;
       align-items: center;
     }
-  
-    .right-button {
-      margin-top: 10px; /* Add spacing between buttons on smaller screens */
-    }
+
+  }
+
+#submit-button {
+margin-left: 10px;
   }
 
 .modal-header {
