@@ -1,6 +1,6 @@
 let pokemonRepository = (function() {
   let pokemonList = []; // An empty array to store Pokemon data
-  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?offset=20&limit=250';
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?offset=20&limit=21';
   
 
   function loadList() {
@@ -102,7 +102,6 @@ let pokemonRepository = (function() {
     }
   });
 
-  
   return {
     getAll: getAll, // Exposes the getAll function
     add: add, // Exposes the add function
