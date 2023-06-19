@@ -1,14 +1,30 @@
 let pokemonRepository = (function() {
   let pokemonList = []; // An empty array to store Pokemon data
-  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?offset=20&limit=21';
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.getElementById("next-btn");
   
 
-  function loadList() {
+  function loadList(apiUrl) {
     return fetch(apiUrl)
       .then(function(response) {
         return response.json(); // Parses the response as JSON
       })
       .then(function(json) {
+        cleanAll(); 
+        prevBtn.addEventListener("click", () => {
+          pokemonRepository.loadList(json.prev).then(function() {
+            pokemonRepository.getAll().forEach(function(pokemon) {
+              pokemonRepository.addListItem(pokemon); // Loads the Pokemon list and adds list items for each Pokemon
+            });
+          });
+        });
+        nextBtn.addEventListener("click", () => {
+          pokemonRepository.loadList(json.next).then(function() {
+            pokemonRepository.getAll().forEach(function(pokemon) {
+              pokemonRepository.addListItem(pokemon); // Loads the Pokemon list and adds list items for each Pokemon
+            });
+          });
+        });
         json.results.forEach(function(item) {
           let pokemon = {
             name: item.name,
@@ -102,6 +118,12 @@ let pokemonRepository = (function() {
     }
   });
 
+  function cleanAll() {
+    const pokemonULList = document.querySelector('.list-group');
+    pokemonULList.innerHTML = "";
+    pokemonList.length = 0;
+  }
+
   return {
     getAll: getAll, // Exposes the getAll function
     add: add, // Exposes the add function
@@ -110,10 +132,12 @@ let pokemonRepository = (function() {
     loadDetails: loadDetails, // Exposes the loadDetails function
     showDetails: showDetails, // Exposes the showDetails function
     showModal: showModal, // Exposes the showModal function
+    cleanAll: cleanAll, // Cleans the UI list and array
   };
 })();
 
-pokemonRepository.loadList().then(function() {
+const startAPIURL = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20';
+pokemonRepository.loadList(startAPIURL).then(function() {
   pokemonRepository.getAll().forEach(function(pokemon) {
     pokemonRepository.addListItem(pokemon); // Loads the Pokemon list and adds list items for each Pokemon
   });
